@@ -1,0 +1,16 @@
+**Stage 5 (Energy Consumption):**
+- **CRITICAL**: Exactly 24 hourly data points for EACH member (no exceptions!)
+- **CRITICAL**: Exactly 24 hourly HVAC heating data points (no exceptions!)
+- **CRITICAL**: Exactly 24 hourly HVAC cooling data points (no exceptions!)
+- Hour values sequential (0-23)
+- Consumption values ≥ 0 kWh
+- **Consumption = 0 when member is outside the house is IDEAL but not critical** - small consumption while at work is acceptable
+- Typical appliance consumption ranges (guidelines, not strict limits):
+  * Sleeping: 0.01-0.05 kWh
+  * Cooking: 0.1-0.8 kWh
+  * TV/Entertainment: 0.05-0.4 kWh
+  * HVAC: 0.3-4.0 kWh (varies widely)
+- HVAC usage MUST be consistent with weather conditions:
+  * Cooling MUST be non-zero during sustained high temperatures when occupants are home
+  * Heating MUST be non-zero during sustained low temperatures when occupants are home
+- HVAC consumption when no members are home MUST be significantly lower than when the house is occupied, unless justified by extreme weather conditions.

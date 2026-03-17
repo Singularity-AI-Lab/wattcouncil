@@ -1,0 +1,8 @@
+**Stage 5 (Energy Consumption):**
+- Daily activities appropriate for cultural norms and day type (weekday/weekend)
+- **NOTE**: Minor variations in meal times (±1 hour) are ACCEPTABLE - don't flag unless severely wrong (e.g., dinner at 3 AM)
+- **NOTE**: Prayer times don't need to be exact - approximate timing is fine
+- Weekend activities consider religious observances (e.g., Friday prayers, Sunday church) - but flexibility is OK
+- HVAC usage patterns appropriate for climate
+- Work/school timing roughly matches country schedules - exact timing not critical
+- **IMPORTANT**: Stage 5 is complex with lots of data - only flag genuinely problematic cultural issues, not minor timing variations!

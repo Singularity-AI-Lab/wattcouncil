@@ -1,0 +1,24 @@
+NOTE: In Stage 1, occupations, schedules, and detailed ages may be absent by design.
+Do NOT flag their absence as an issue.
+Evaluate only structural and cultural plausibility based on available fields.
+
+**Stage 1 (Family Structures):**
+- Family compositions realistic for the country's demographics
+- Occupations appropriate for age, gender norms, and economic context (but allow common professions like "Business Owner", "Teacher", etc. - these are normal!)
+- **CRITICAL**: Check that 'chief_income_earner_status' is EXACTLY one of: "employee", "self-employed", "unemployed", "retired". It MUST NOT contain extra details like "employee - teacher".
+- **CRITICAL**: Check that 'chief_income_earner_status' matches at least one member's 'work_modality':
+  - `employee`/`self-employed` -> matches `office`, `remote`, `hybrid`, `shift-based`.
+  - `retired` -> matches `retired`.
+  - `unemployed` -> matches `not-employed`.
+- **CRITICAL**: Check that 'household_type' is EXACTLY one of: "alone", "adults_only", "with_kids" and matches the members:
+  - `alone` -> num_people MUST be 1, only one member in the list
+  - `adults_only` -> All members must be adults (no children under 15), num_people >= 2
+  - `with_kids` -> At least one member must be a child under 15 (student/child role)
+- **CRITICAL**: Check that 'num_people' equals the exact count of members in the 'members' array
+- **Consistency**: 'household_work_regime' and 'weekday_daytime_occupancy_level' must logically follow logic:
+  - `student` members are OUT during the day (contributes to `low` occupancy).
+  - `not-employed`/`retired`/`remote` are HOME (contributes to `high` occupancy).
+  - Mixed states = `partial` occupancy.
+- **Home Types**: Must be EXACTLY one of: "Apartment", "Semi-detached house", "Detached house", "Terraced house", "Bungalow". ALL of these are valid - do NOT flag any as "uncommon" or "not typical". Accept all valid schema values equally.
+- **Avoid harmful stereotypes** but respect cultural realities (e.g., "Retiree" is a perfectly acceptable occupation for elderly people in ALL cultures)
+- **NOTE**: Computers, smartphones, and modern appliances are common across ALL economic levels - don't flag these as unrealistic!

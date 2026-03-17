@@ -1,0 +1,141 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "Seasonal weather data processed per signal (min/max + hourly profile)",
+    "properties": {
+        "country": {
+            "type": "string",
+            "description": "Country name"
+        },
+        "year": {
+            "type": "integer",
+            "description": "Year for weather data"
+        },
+        "season": {
+            "type": "string",
+            "enum": [
+                "Winter",
+                "Spring",
+                "Summer",
+                "Autumn"
+            ],
+            "description": "Season name"
+        },
+        "weather_data": {
+            "type": "object",
+            "description": "Weather signals containing both ranges and hourly profiles",
+            "properties": {
+                "temperature": {
+                    "$ref": "#/definitions/signal_data"
+                },
+                "humidity": {
+                    "$ref": "#/definitions/signal_data_pct"
+                },
+                "solar_radiation_diffuse": {
+                    "$ref": "#/definitions/signal_data_pos"
+                },
+                "solar_radiation_direct": {
+                    "$ref": "#/definitions/signal_data_pos"
+                }
+            },
+            "required": [
+                "temperature",
+                "humidity",
+                "solar_radiation_diffuse",
+                "solar_radiation_direct"
+            ]
+        }
+    },
+    "definitions": {
+        "signal_data": {
+            "type": "object",
+            "properties": {
+                "min": {
+                    "type": "number",
+                    "description": "Daily minimum value"
+                },
+                "max": {
+                    "type": "number",
+                    "description": "Daily maximum value"
+                },
+                "hourly_profile": {
+                    "type": "array",
+                    "description": "24-hour hourly values (0-23)",
+                    "minItems": 24,
+                    "maxItems": 24,
+                    "items": {
+                        "type": "number"
+                    }
+                }
+            },
+            "required": [
+                "min",
+                "max",
+                "hourly_profile"
+            ]
+        },
+        "signal_data_pct": {
+            "type": "object",
+            "properties": {
+                "min": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "max": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "hourly_profile": {
+                    "type": "array",
+                    "minItems": 24,
+                    "maxItems": 24,
+                    "items": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 100
+                    }
+                }
+            },
+            "required": [
+                "min",
+                "max",
+                "hourly_profile"
+            ]
+        },
+        "signal_data_pos": {
+            "type": "object",
+            "properties": {
+                "min": {
+                    "type": "number",
+                    "minimum": 0
+                },
+                "max": {
+                    "type": "number",
+                    "minimum": 0
+                },
+                "hourly_profile": {
+                    "type": "array",
+                    "minItems": 24,
+                    "maxItems": 24,
+                    "items": {
+                        "type": "number",
+                        "minimum": 0
+                    }
+                }
+            },
+            "required": [
+                "min",
+                "max",
+                "hourly_profile"
+            ]
+        }
+    },
+    "required": [
+        "country",
+        "year",
+        "season",
+        "weather_data"
+    ]
+}

@@ -1,0 +1,44 @@
+# Runtime Configuration for Pipeline Execution
+# This file contains execution-specific parameters for running the pipeline
+# Each stage has its own context-specific parameters
+
+# Global Pipeline Settings
+pipeline:
+  country: "Ireland"  # Used across all stages
+  year: 2009
+  resume_from_checkpoint: false
+  
+  # Output naming configuration
+  output:
+    # Consolidated output files (one file per stage combining all variants)
+    stage1_combined: "stage1_families.json"
+    stage2_combined: "stage2_weather_profiles.json"
+    stage3_combined: "stage3_consumption.json"
+    
+    # Raw output directories (individual files per item/variant)
+    raw_dirs:
+      stage1: "raw/stage1_families"          # Families (with work regimes)
+      stage2: "raw/stage2_weather"           # Weather profiles
+      stage3: "raw/stage3_consumption"       # Consumption profiles
+
+# Stage-Specific Parameters
+stages:
+  stage1_families:
+    enabled: true
+    targeted_generation: false # Enable targeted mode
+    num_families: 1  # Limit to 1 for fast testing
+    num_variants: 1
+    
+  stage2_weather:
+    enabled: true
+    num_variants: 1  # Number of weather variations (seasonality handled internally)
+    seasons:  # List of seasons to generate/process
+      - "summer"
+      - "winter"
+      - "spring"
+      - "autumn"
+    
+  stage3_consumption:
+    enabled: true
+    num_variants: 1  # Number of consumption variations per family×weather combination
+    day_types: ["weekday"] #, "weekend"] # Optional: override default day types

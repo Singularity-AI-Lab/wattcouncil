@@ -1,0 +1,34 @@
+Generate a daily electricity usage pattern for a family in **$country** during **$season** season on a **$day_type**.
+
+**Family Information:**
+```json
+$family_data
+```
+
+**Work & School Schedule:**
+```json
+$work_regime
+```
+
+**Hourly Weather Data:**
+```json
+$weather_hourly
+```
+
+**Expected JSON Structure:**
+```json
+$SCHEMA
+```
+
+**Important Guidelines:**
+1. Generate exactly 24 hourly data points (hours 0-23) for each family member
+2. Generate exactly 24 hourly HVAC data points for heating/cooling
+3. If member is outside the house (work/school), their consumption = 0
+4. Use weather data to determine appropriate heating/cooling needs
+5. Consider that this is a **$day_type** - ensure actions match cultural norms for $country and are appropriate for this day type
+6. Include realistic family interactions
+7. Action names should use hyphens (e.g., "Watching-TV", "Helping-with-homework")
+8. No action repeated for more than 3 hours (except sleeping, max 8 hours)
+9. member_id values MUST correspond exactly to the member IDs provided in the input family data and work regime.
+
+**Respond with ONLY the JSON object matching the schema above, no additional text**

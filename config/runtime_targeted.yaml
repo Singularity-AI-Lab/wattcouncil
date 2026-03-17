@@ -1,0 +1,52 @@
+# Runtime Configuration for Pipeline Execution
+# This file contains execution-specific parameters for running the pipeline
+# Each stage has its own context-specific parameters
+
+# Global Pipeline Settings
+pipeline:
+  country: "Ireland"  # Used across all stages
+  year: 2009
+  resume_from_checkpoint: false
+  
+  # Output naming configuration
+  output:
+    # Consolidated output files (one file per stage combining all variants)
+    stage1_combined: "stage1_families.json"
+    stage2_combined: "stage2_weather_profiles.json"
+    stage3_combined: "stage3_consumption.json"
+    
+    # Raw output directories (individual files per item/variant)
+    raw_dirs:
+      stage1: "raw/stage1_families"          # Families (with work regimes)
+      stage2: "raw/stage2_weather"           # Weather profiles
+      stage3: "raw/stage3_consumption"       # Consumption profiles
+
+# Stage-Specific Parameters
+stages:
+  stage1_families:
+    enabled: true
+    targeted_generation: true # Enable targeted mode
+    # num_families: 5  # Limit not needed if using representative_combos
+    num_variants: 2   # This will be used as the target variants count
+    
+    # Representative combinations filtered by (num_people, house_type, composition)
+    representative_combos:
+      - [1, 5, 1]  # Small (1 person), Bungalow, alone
+      # - [2, 4, 2]  # Small, terraced, adults_only
+      # - [3, 3, 2]  # Medium, detached, adults_only
+      # - [3, 2, 3]  # Medium, semi-detached, with_kids
+      # - [4, 3, 3]  # Large, detached, with_kids
+    
+  stage2_weather:
+    enabled: true
+    num_variants: 1  # Number of weather variations (seasonality handled internally)
+    seasons:  # List of seasons to generate/process
+      # - "summer"
+      # - "winter"
+      # - "spring"
+      - "autumn"
+    
+  stage3_consumption:
+    enabled: true
+    num_variants: 1  # Number of consumption variations per family×weather combination
+    day_types: ["weekday", "weekend"] # Optional: override default day types

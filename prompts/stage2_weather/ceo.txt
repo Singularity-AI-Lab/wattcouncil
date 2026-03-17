@@ -1,0 +1,10 @@
+**Stage-Specific Considerations:**
+
+**Weather Ranges:**
+- Seasonal variations must make meteorological sense
+- Values must allow other stages to generate realistic hourly patterns
+
+**Hourly Weather:**
+- **CRITICAL**: Solar radiation at night is a HIGH severity violation
+- Diurnal patterns must be physically coherent
+- Must align with Weather Ranges

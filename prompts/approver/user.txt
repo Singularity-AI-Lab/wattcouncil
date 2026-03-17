@@ -1,0 +1,15 @@
+STAGE: $stage
+
+YOUR PREVIOUS GUIDANCE:
+$guidance
+
+OLD OUTPUT (Before Editor):
+$old_output
+
+NEW OUTPUT (After Editor):
+$new_output
+
+TASK:
+Compare the old and new outputs against your guidance. Did the editor successfully implement the requested changes?
+
+Provide your decision in JSON format.

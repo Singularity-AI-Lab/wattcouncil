@@ -1,0 +1,18 @@
+**Stage:** $stage
+
+**Generated Output:**
+```json
+$generated_output
+```
+
+**Cultural Auditor Report:**
+```json
+$cultural_audit
+```
+
+**Physical Auditor Report:**
+```json
+$physical_audit
+```
+
+$stage_specific_considerations

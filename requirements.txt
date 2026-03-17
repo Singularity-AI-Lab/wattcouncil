@@ -1,0 +1,7 @@
+python-dotenv>=1.0.0
+pyyaml>=6.0
+openai>=1.0.0
+pvlib>=0.10.0
+pandas>=2.0.0
+holidays>=0.30.0
+seaborn>=0.13.2

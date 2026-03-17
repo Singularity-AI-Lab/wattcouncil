@@ -1,0 +1,35 @@
+**Weather Ranges:**
+- **CRITICAL**: Response MUST include `country` and `year` fields at the top level
+- All 4 seasons present (Winter, Spring, Summer, Autumn)
+- **Check Keys**: Ensure ALL 4 signals are present: `temperature`, `humidity`, `solar_radiation_diffuse`, `solar_radiation_direct`
+- Min values < Max values for all parameters
+- Temperature ranges realistic (typically -50°C to 55°C, depending on location)
+- Humidity ranges valid (0-100%)
+- Solar radiation ranges realistic:
+  * Diffuse: typically 0-400 W/m²
+  * Direct: typically 0-1000 W/m²
+  * Direct should be > Diffuse in clear conditions
+- **Hourly Profiles**:
+  - Must be present for all signals (24 values each) but depends on the season and country
+  - Values should generally fall within the Min/Max range for that signal
+  - Solar radiation at night (hours ~22-05) must be 0
+  - Solar Diffuse should generally be less than Direct in clear conditions, but logical variations allowed
+  - Temperature profile should show diurnal cycle (low at sunrise, high afternoon)
+
+**Hourly Weather:**
+- Exactly 24 hourly data points (hours 0-23)
+- Hour values sequential (0, 1, 2, ..., 23)
+- **CRITICAL: Solar radiation MUST be 0 before sunrise and after sunset**
+- Temperature follows realistic diurnal pattern (min at sunrise, max in afternoon)
+- Solar radiation peaks around noon, NOT at sunrise/sunset
+- Temperature peaks ~2 hours after solar peak (thermal lag)
+- Direct + Diffuse solar radiation ≤ 1000 W/m²
+
+- During night hours (before sunrise, after sunset):
+  * solar_radiation_direct MUST be exactly 0
+  * solar_radiation_diffuse MUST be exactly 0
+
+- Smooth hour-to-hour transitions (no sudden unrealistic jumps)
+- Hourly values MUST remain within the corresponding seasonal min/max ranges.
+
+

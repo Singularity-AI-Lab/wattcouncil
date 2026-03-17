@@ -1,0 +1,38 @@
+Generate comprehensive weather data for **$season** in **$country** for the year **$year**.
+
+**What to provide:**
+For the specified season, generate weather data grouped by signal (temperature, humidity, solar radiation).
+
+For EACH weather parameter, provide:
+1. **min**: Minimum typical value for this season
+2. **max**: Maximum typical value for this season  
+3. **hourly_profile**: Array of 24 values (hours 0-23) representing a typical day
+
+**Parameters to include:**
+- Temperature (°C)
+- Humidity (%)
+- Solar Radiation - Diffuse (W/m²)
+- Solar Radiation - Direct (W/m²)
+
+**Expected JSON Structure:**
+```json
+$SCHEMA
+```
+
+**Critical Requirements:**
+1. **Include metadata**: The output MUST include `country`, `year`, and `season` fields at the root level
+2. **Climate projection**: Adjust values based on the year $year (account for climate change warming trends if future years)
+3. **Seasonal realism**: All values must be realistic for $country's climate in $season
+4. **Min/Max logic**: Min values must be less than max values for each parameter
+5. **Solar at night**: Solar radiation MUST be 0 during night hours (before sunrise, after sunset)
+6. **Diurnal patterns**: 
+   - Temperature minimum at sunrise, peak in afternoon (2-4 PM)
+   - Solar radiation peaks at midday (12-2 PM), zero at night
+   - Humidity often higher at night, lower during peak solar hours
+7. **Smooth transitions**: Ensure hour-to-hour changes are realistic (no sudden jumps)
+8. **Physical coherence**: Hourly profile values must stay within the min/max ranges
+
+**Rare Events:**
+You may include extreme weather events (heatwaves, cold snaps) where appropriate to capture realistic variability.
+
+**Respond with ONLY the valid JSON object matching the schema above, no additional text**

@@ -1,0 +1,2 @@
+# Cultural auditing not applicable for weather data (meteorology is universal)
+# This file is kept as a placeholder to maintain consistent folder structure

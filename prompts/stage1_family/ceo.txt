@@ -1,0 +1,7 @@
+**Stage-Specific Considerations:**
+
+**Stage 1 (Family Structures):**
+- Family diversity is critical - must represent different demographics
+- Cultural appropriateness is paramount - schedules, occupations must match country norms
+- **Strict Adherence**: Ensure 'home_type', 'household_type', and 'chief_income_earner_status' strictly follow the allowed lowercase enum values. Reject any hallucinations or extra text.
+- **Household Type Validation**: Ensure 'household_type' (alone/adults_only/with_kids) matches the members list and 'num_people' equals the member count.

@@ -1,0 +1,6 @@
+**Stage-Specific Considerations:**
+
+**Stage 5 (Energy Consumption):**
+- Consumption patterns must match weather (HVAC usage)
+- Cultural activities must be appropriate for day type and country
+- Member actions must flow logically through the day

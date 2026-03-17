@@ -1,0 +1,15 @@
+ORIGINAL JSON (with issues):
+```json
+$original_json
+```
+
+ISSUES TO FIX:
+$fix_guidance
+
+INSTRUCTIONS:
+1. Take the ORIGINAL JSON above
+2. Fix ONLY the specific issues mentioned
+3. Keep everything else exactly the same
+4. Return ONLY the corrected JSON, no explanations
+
+OUTPUT (corrected JSON):

@@ -1,0 +1,76 @@
+# Default Configuration for LLM Council Energy Pipeline
+# This file contains static configuration for models, providers, and system settings
+
+# Provider Configuration
+providers:
+  deepinfra:
+    base_url: "https://api.deepinfra.com/v1/openai"
+    api_key_env: "DEEPINFRA_API_KEY"
+  openrouter:
+    base_url: "https://openrouter.ai/api/v1"
+    api_key_env: "OPENROUTER_API_KEY"
+
+active_provider: "deepinfra"
+
+# Default Model Settings (fallback values)
+model_defaults:
+  temperature: 0.7
+  max_tokens: 16000
+  top_p: 1.0
+  frequency_penalty: 0
+  presence_penalty: 0
+
+# Role-Specific Configuration
+roles:
+  generator:
+    model: "google/gemini-2.5-flash"  # Diverse model for cultural perspective
+    temperature: 0.7
+    max_tokens: 16000
+    
+  cultural_auditor:
+    model: "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8"
+    temperature: 0.3
+    max_tokens: 4000
+    
+  physical_auditor:
+    model: "anthropic/claude-4-sonnet"
+    temperature: 0.3  # Lower = more consistent auditing
+    max_tokens: 4000
+    
+  ceo:
+    # model: "moonshotai/Kimi-K2-Instruct-0905"
+    # temperature: 0.5  # Balanced for decision-making
+    # max_tokens: 4000
+    model: "Qwen/Qwen2.5-72B-Instruct"
+    temperature: 0.4
+    max_tokens: 4000
+
+  editor:
+    model: "meta-llama/Llama-3.3-70B-Instruct-Turbo"  # Excellent coder/editor
+    temperature: 0.4
+    max_tokens: 16000
+  
+  approver:
+    model: "mistralai/Mistral-Small-3.2-24B-Instruct-2506"  # Strong reasoning for verification
+    temperature: 0.3
+    max_tokens: 4000
+
+
+# Orchestrator Configuration
+orchestrator:
+  max_retries: 3
+  enable_checkpoints: true
+  checkpoint_dir: "outputs/checkpoints"
+  debug_dir: "outputs/debug"
+
+# File Paths
+paths:
+  prompts_dir: "prompts"
+  outputs_dir: "outputs"
+  schemas_dir: "schemas"
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  enable_api_logging: true
+  api_log_file: "outputs/api_calls.jsonl"

@@ -1,0 +1,52 @@
+# TMY Weather Generation Settings
+# Configuration for generating weather data using pvlib TMY (Typical Meteorological Year)
+# Pass this file via --weather-config to enable TMY-based weather generation
+# If not provided, pipeline will use LLM-based weather generation
+
+# TMY Data Source Settings
+tmy:
+  # PVGIS API settings
+  api:
+    timeout: 30  # Timeout in seconds for API calls
+    start_year: 2005  # Start year for TMY data range
+    end_year: 2020    # End year for TMY data range
+    use_horizon: true  # Use horizon data for more accurate solar radiation
+  
+  # Cache settings to avoid redundant PVGIS API calls
+  cache:
+    enabled: true
+    directory: "outputs/cache/tmy"  # Cache organized by {country}/{year}/tmy_data.csv
+  
+  # Country coordinates (latitude, longitude)
+  # Add more countries as needed
+  coordinates:
+    UAE: [25.2048, 55.2708]  # Dubai
+    "United Arab Emirates": [25.2048, 55.2708]
+    "Saudi Arabia": [24.7136, 46.6753]  # Riyadh
+    USA: [38.9072, -77.0369]  # Washington DC
+    "United States": [38.9072, -77.0369]
+    Japan: [35.6762, 139.6503]  # Tokyo
+    Germany: [52.5200, 13.4050]  # Berlin
+    Brazil: [-15.8267, -47.9218]  # Brasília
+    Sweden: [59.3293, 18.0686]  # Stockholm
+    Ireland: [53.3498, -6.2603]  # Dublin
+  
+  # Southern hemisphere countries (for correct season mapping)
+  southern_hemisphere:
+    - Brazil
+    - Australia
+    - South Africa
+    - Argentina
+    - Chile
+    - New Zealand
+
+# Output settings for TMY-generated weather
+output:
+  # Save individual CSV files per season
+  save_csv: true
+  
+  # Convert to JSON format (compatible with pipeline stages)
+  save_json: true
+  
+  # Include metadata in outputs
+  include_metadata: true

@@ -1,0 +1,32 @@
+# Environment file
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Outputs
+outputs/raw/*.json
+outputs/validated/*.json
+!outputs/raw/.gitkeep
+!outputs/validated/.gitkeep
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+outputs/
+
+customer*
+utils/features.py

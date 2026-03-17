@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "description": "Array of diverse family structures for a country",
+  "items": {
+    "type": "object",
+    "properties": {
+      "family_type": {
+        "type": "string",
+        "description": "Descriptive name for this family structure (e.g., Nuclear Family, Extended Family, Single Parent)"
+      },
+      "household_id": {
+        "type": "string",
+        "description": "Unique identifier for this household"
+      },
+      "country": {
+        "type": "string",
+        "description": "Country where this family resides"
+      },
+      "members": {
+        "type": "array",
+        "description": "List of family members with roles and work details",
+        "items": {
+          "type": "object",
+          "properties": {
+            "role": {
+              "type": "string",
+              "description": "Member role/description (e.g., 'Father', 'Mother', 'Son (10 years)')"
+            },
+            "work_modality": {
+              "type": "string",
+              "description": "Primary work/activity modality for this member",
+              "enum": [
+                "office",
+                "remote",
+                "hybrid",
+                "shift-based",
+                "not-employed",
+                "student",
+                "retired"
+              ]
+            }
+          },
+          "required": [
+            "role",
+            "work_modality"
+          ]
+        },
+        "minItems": 1
+      },
+      "home_type": {
+        "type": "string",
+        "description": "Type of dwelling",
+        "enum": [
+          "Apartment",
+          "Semi-detached house",
+          "Detached house",
+          "Terraced house",
+          "Bungalow"
+        ]
+      },
+      "household_type": {
+        "type": "string",
+        "description": "Household composition type based on who lives in the home",
+        "enum": [
+          "alone",
+          "adults_only",
+          "with_kids"
+        ]
+      },
+      "num_people": {
+        "type": "integer",
+        "description": "Total number of people in the household",
+        "minimum": 1
+      },
+      "chief_income_earner_status": {
+        "type": "string",
+        "description": "Employment status of the chief income earner",
+        "enum": [
+          "employee",
+          "self-employed",
+          "unemployed",
+          "retired"
+        ]
+      },
+      "appliances": {
+        "type": "array",
+        "description": "List of household appliances",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1
+      },
+      "household_work_regime": {
+        "type": "string",
+        "description": "Overall household work regime classification",
+        "enum": [
+          "mostly_out",
+          "mostly_home",
+          "mixed"
+        ]
+      },
+      "weekday_daytime_occupancy_level": {
+        "type": "string",
+        "description": "Expected occupancy level during weekday daytime (9am-5pm)",
+        "enum": [
+          "low",
+          "partial",
+          "high"
+        ]
+      }
+    },
+    "required": [
+      "family_type",
+      "country",
+      "members",
+      "home_type",
+      "household_type",
+      "num_people",
+      "chief_income_earner_status",
+      "appliances",
+      "household_work_regime",
+      "weekday_daytime_occupancy_level"
+    ]
+  },
+  "minItems": 1
+}

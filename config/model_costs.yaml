@@ -1,0 +1,108 @@
+# Model Cost Configuration
+# Defines cost per million tokens (input and output) for each model
+# Used to calculate actual API costs based on token usage
+#
+# Format - Provider-specific pricing:
+#   provider_name:
+#     model_name:
+#       input_cost_per_million: <dollar amount>
+#       output_cost_per_million: <dollar amount>
+#
+# Costs are in USD per 1 million tokens
+
+deepinfra:
+  # Google Models
+  "google/gemini-2.5-flash":
+    input_cost_per_million: 0.30
+    output_cost_per_million: 2.50
+    
+  "google/gemini-2.5-pro":
+    input_cost_per_million: 1.25
+    output_cost_per_million: 10.00
+    
+  # Anthropic Models
+  "anthropic/claude-4-sonnet":
+    input_cost_per_million: 3.30
+    output_cost_per_million: 16.50
+    
+  "anthropic/claude-3.7-sonnet":
+    input_cost_per_million: 3.30
+    output_cost_per_million: 16.50
+    
+  # Meta Llama Models
+  "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8":
+    input_cost_per_million: 0.15
+    output_cost_per_million: 0.60
+    
+  "meta-llama/Llama-3.3-70B-Instruct-Turbo":
+    input_cost_per_million: 0.10
+    output_cost_per_million: 0.32
+    
+  # Moonshot AI Models
+  "moonshotai/Kimi-K2-Instruct-0905":
+    input_cost_per_million: 0.40
+    output_cost_per_million: 2.00
+    
+  # Mistral Models
+  "mistralai/Mistral-Small-3.2-24B-Instruct-2506":
+    input_cost_per_million: 0.075
+    output_cost_per_million: 0.20
+
+  "mistralai/mistralai/Mixtral-8x7B-Instruct-v0.1":
+    input_cost_per_million: 0.54
+    output_cost_per_million: 0.54
+
+openrouter:
+  # Google Models
+  "google/gemini-2.5-flash":
+    input_cost_per_million: 0.30
+    output_cost_per_million: 2.50
+    
+  "google/gemini-2.5-pro":
+    input_cost_per_million: 1.25
+    output_cost_per_million: 10.00
+    
+  # Anthropic Models
+  "anthropic/claude-4-sonnet":   #anthropic/claude-sonnet-4
+    input_cost_per_million: 3.0
+    output_cost_per_million: 15.0
+    
+  "anthropic/claude-3.7-sonnet":
+    input_cost_per_million: 3.0
+    output_cost_per_million: 15.0
+
+  "anthropic/claude-3.7-sonnet:thinking":
+    input_cost_per_million: 3.0
+    output_cost_per_million: 15.0
+    
+  # Meta Llama Models
+  "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8":    #meta-llama/llama-4-maverick
+    input_cost_per_million: 0.15
+    output_cost_per_million: 0.60
+    
+  "meta-llama/Llama-3.3-70B-Instruct-Turbo":        #meta-llama/llama-3.3-70b-instruct
+    input_cost_per_million: 0.10
+    output_cost_per_million: 0.32
+    
+  # Moonshot AI Models
+  "moonshotai/Kimi-K2-Instruct-0905":      #moonshotai/kimi-k2-0905
+    input_cost_per_million: 0.39
+    output_cost_per_million: 1.90
+
+  "moonshotai/kimi-k2-thinking":   #*** 
+    input_cost_per_million: 0.40
+    output_cost_per_million: 1.75
+
+  # Mistral Models
+  "mistralai/Mistral-Small-3.2-24B-Instruct-2506":      #mistralai/mistral-small-3.2-24b-instruct
+    input_cost_per_million: 0.06
+    output_cost_per_million: 0.18
+
+  "mistralai/mistralai/Mixtral-8x7B-Instruct-v0.1":      #mistralai/mixtral-8x7b-instruct
+    input_cost_per_million: 0.54
+    output_cost_per_million: 0.54
+
+# Default costs for unknown models (fallback)
+default:
+  input_cost_per_million: 1.00
+  output_cost_per_million: 3.00

@@ -1,0 +1,11 @@
+Review the following output for **$stage**:
+
+**Generated Output:**
+```json
+$generated_output
+```
+
+**Context:**
+$context
+
+$stage_specific_constraints

@@ -1,0 +1,67 @@
+# Shared Constants Configuration
+# All hardcoded values from scripts moved here for centralized management
+# DO NOT modify these values without understanding their impact across the entire pipeline
+
+countries:
+  # ISO codes to full country names
+  code_to_name:
+    AE: "United Arab Emirates"
+    US: "United States"
+    UK: "United Kingdom"
+    BR: "Brazil"
+    IE: "Ireland"
+  
+  # Aliases for common country name variations
+  # These map to ISO codes above
+  aliases:
+    UAE: "AE"
+    USA: "US"
+  
+  # Weekend definitions by country code
+  # Format: [{start: YYYY-MM-DD, end: YYYY-12-31, weekend: [DAY1, DAY2]}]
+  # DAY format: MON, TUE, WED, THU, FRI, SAT, SUN
+  weekends:
+    AE:
+      - {start: "2006-09-01", end: "2021-12-31", weekend: ["FRI", "SAT"]}
+      - {start: "2022-01-01", end: "2099-12-31", weekend: ["SAT", "SUN"]}
+    US:
+      - {start: "1900-01-01", end: "2099-12-31", weekend: ["SAT", "SUN"]}
+    UK:
+      - {start: "1900-01-01", end: "2099-12-31", weekend: ["SAT", "SUN"]}
+    BR:
+      - {start: "1900-01-01", end: "2099-12-31", weekend: ["SAT", "SUN"]}
+    IE:
+      - {start: "1900-01-01", end: "2099-12-31", weekend: ["SAT", "SUN"]}
+
+time_data:
+  # Pandas frequency string for time series generation
+  time_step: "h"  # h=hourly, D=daily, W=weekly, M=monthly
+  
+  # Time range templates (use {year} placeholder)
+  start_template: "{year}-01-01 00:00:00"
+  end_template: "{year}-12-31 23:00:00"
+  
+  # Base filename template for yearly time data files
+  yearly_file_template: "time_data_yearly"
+
+plotting:
+  # Season color mapping for consistent visualization
+  season_colors:
+    winter: "#1f77b4"  # blue
+    spring: "#2ca02c"  # green
+    summer: "#d62728"  # red
+    autumn: "#ff7f0e"  # orange
+    fall: "#ff7f0e"    # alias for autumn
+  
+  # Display labels for plots
+  labels:
+    # Weather variable display labels
+    Temperature_Value: "Temperature (°C)"
+    Humidity_Value: "Humidity (%)"
+    SolRad-Diffuse_Value: "Diffuse Radiation (W/m²)"
+    SolRad-Direct_Value: "Direct Radiation (W/m²)"
+    SolRad-Global_Value: "Global Radiation (W/m²)"
+    Wind-Speed_Value: "Wind Speed (m/s)"
+    # HVAC display labels
+    Heating_Consumption: "Heating"
+    Cooling_Consumption: "Cooling"

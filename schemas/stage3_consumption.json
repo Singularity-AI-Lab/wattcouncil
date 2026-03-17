@@ -1,0 +1,158 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "Daily electricity consumption pattern for a household",
+    "properties": {
+        "household_id": {
+            "type": "string",
+            "description": "Household identifier"
+        },
+        "country": {
+            "type": "string",
+            "description": "Country name"
+        },
+        "season": {
+            "type": "string",
+            "enum": [
+                "Winter",
+                "Spring",
+                "Summer",
+                "Autumn"
+            ],
+            "description": "Season"
+        },
+        "day_type": {
+            "type": "string",
+            "enum": [
+                "weekday",
+                "weekend"
+            ],
+            "description": "Type of day"
+        },
+        "members": {
+            "type": "array",
+            "description": "Hourly consumption data for each family member",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "member_id": {
+                        "type": "string",
+                        "description": "Member identifier from family data"
+                    },
+                    "hourly_activities": {
+                        "type": "array",
+                        "description": "24 hourly activities and consumption",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "hour": {
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "maximum": 23,
+                                    "description": "Hour of day (0-23)"
+                                },
+                                "action": {
+                                    "type": "string",
+                                    "description": "Activity description (use hyphens, e.g., 'Watching-TV')"
+                                },
+                                "consumption_kwh": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "description": "Electricity consumption in kWh"
+                                }
+                            },
+                            "required": [
+                                "hour",
+                                "action",
+                                "consumption_kwh"
+                            ]
+                        },
+                        "minItems": 24,
+                        "maxItems": 24
+                    }
+                },
+                "required": [
+                    "member_id",
+                    "hourly_activities"
+                ]
+            },
+            "minItems": 1
+        },
+        "hvac": {
+            "type": "object",
+            "description": "HVAC (heating/cooling) consumption",
+            "properties": {
+                "heating": {
+                    "type": "array",
+                    "description": "24 hourly heating data",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "hour": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 23
+                            },
+                            "action": {
+                                "type": "string",
+                                "description": "Heating action description"
+                            },
+                            "consumption_kwh": {
+                                "type": "number",
+                                "minimum": 0
+                            }
+                        },
+                        "required": [
+                            "hour",
+                            "action",
+                            "consumption_kwh"
+                        ]
+                    },
+                    "minItems": 24,
+                    "maxItems": 24
+                },
+                "cooling": {
+                    "type": "array",
+                    "description": "24 hourly cooling data",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "hour": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 23
+                            },
+                            "action": {
+                                "type": "string",
+                                "description": "Cooling action description"
+                            },
+                            "consumption_kwh": {
+                                "type": "number",
+                                "minimum": 0
+                            }
+                        },
+                        "required": [
+                            "hour",
+                            "action",
+                            "consumption_kwh"
+                        ]
+                    },
+                    "minItems": 24,
+                    "maxItems": 24
+                }
+            },
+            "required": [
+                "heating",
+                "cooling"
+            ]
+        }
+    },
+    "required": [
+        "household_id",
+        "country",
+        "season",
+        "day_type",
+        "members",
+        "hvac"
+    ]
+}

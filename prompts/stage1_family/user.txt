@@ -1,0 +1,17 @@
+Generate $num_families unique family types for the country: $country in the year $year
+
+**Constraints (if applicable):**
+- House Type: $house_type
+- Number of People: $num_people
+- Household Composition: $composition
+- Chief Income Earner Status: $chief_income_status
+
+Each family should represent a different household structure common in this country, adhering to the constraints above if they are provided. If a constraint is "Any", you are free to choose.
+
+Respond strictly in valid JSON format.
+Do not include any reasoning, explanations, or commentary.
+
+**Expected JSON Schema**:
+${SCHEMA}
+
+Provide ONLY the valid JSON output. No other text.
